@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FCP social image</title>
+  <link rel="stylesheet" href="../public/assets/bench.css">
+  <link rel="stylesheet" href="../public/styles.css">
+  <style>
+    @font-face { font-family: "Overpass"; src: url("../public/assets/fonts/overpass.woff2") format("woff2"); font-weight: 100 900; }
+    html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+    .card { display: grid; grid-template-columns: 470px 1fr; gap: 24px; align-items: center; height: 100%; padding: 56px 40px 56px 64px; }
+    .lockup { display: flex; align-items: center; gap: 16px; font-weight: 900; font-size: 44px; letter-spacing: 0.02em; }
+    h1 { margin-top: 40px; font-size: 60px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; }
+    .url { margin-top: 36px; font-size: 24px; font-weight: 700; color: var(--ink-soft); }
+    .bench { margin-right: -24px; }
+  </style>
+  <script type="module" src="../public/assets/bench.js"></script>
+</head>
+<body>
+  <div class="card">
+    <div>
+      <div class="lockup"><img src="../public/assets/brand/fcp-mark.svg" alt="" width="64" height="64">FCP</div>
+      <h1>One fisheye camera. Lanes, vehicles, lights and signs.</h1>
+      <p class="url">fcp.famashines.com</p>
+    </div>
+    <div class="bench iso" data-theme="light" data-bench data-fcw="off"><div class="bench-art" data-bench-art></div></div>
+  </div>
+</body>
+</html>
