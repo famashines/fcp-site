@@ -49,9 +49,9 @@
   <text class="label" x="588" y="62">3D scene</text>
 
   <rect class="pane" x="576" y="200" width="368" height="152" rx="6"/>
-  <path class="grid" d="M716 210 V340 M804 210 V340"/>
-  <path class="lane" d="M672 214 V344 M848 214 V344"/>
-  <path class="lane-far" d="M760 214 V344"/>
+  <path class="grid" d="M716 232 V340 M804 232 V340"/>
+  <path class="lane" d="M672 232 V344 M848 232 V344"/>
+  <path class="lane-far" d="M760 232 V344"/>
   <rect class="cipv" x="726" y="236" width="24" height="40" rx="4"/>
   <rect class="box" x="814" y="262" width="22" height="36" rx="4"/>
   <rect class="ego" x="726" y="300" width="24" height="40" rx="4"/>
