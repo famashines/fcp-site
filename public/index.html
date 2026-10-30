@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/assets/bench.css">
   <link rel="stylesheet" href="/styles.css">
   <script type="module" src="/assets/bench.js"></script>
+  <script type="module" src="/assets/site.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -169,8 +170,43 @@
   </main>
 
   <footer class="foot">
-    <img src="/assets/brand/fcp-mark.svg" alt="" width="24" height="24">
-    <p>FCP is a side project, hosted by famashines.</p>
+    <div class="foot-main">
+      <div class="foot-brand">
+        <a class="brand" href="/" aria-label="FCP home">
+          <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true"><defs><clipPath id="foot-lens"><circle cx="32" cy="32" r="26"/></clipPath></defs><circle cx="32" cy="32" r="27.5" fill="none" stroke="currentColor" stroke-width="5"/><g clip-path="url(#foot-lens)" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M12 66 29.5 24M52 66 34.5 24"/></g><rect x="27" y="41" width="10" height="7" rx="1.5" fill="#F2B705"/></svg>
+          <span>FCP</span>
+        </a>
+        <p>An open-source front-camera perception and ADAS stack, built from open models, public datasets and published methods.</p>
+      </div>
+      <nav class="foot-col" aria-labelledby="foot-sections">
+        <h2 id="foot-sections">Sections</h2>
+        <ul>
+          <li><a href="#sees">What it sees</a></li>
+          <li><a href="#functions">Functions</a></li>
+          <li><a href="#studio">Studio</a></li>
+          <li><a href="#inside">Inside</a></li>
+          <li><a href="#status">Status</a></li>
+        </ul>
+      </nav>
+      <div class="foot-col">
+        <h2>Project</h2>
+        <ul>
+          <li>Version 0.2</li>
+          <li>Source code not public yet</li>
+          <li><a href="#join">Collaborate</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>© 2026 FCP</p>
+      <p>A side project, hosted by famashines</p>
+    </div>
   </footer>
 </body>
 </html>

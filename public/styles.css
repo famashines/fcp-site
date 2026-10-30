@@ -49,11 +49,19 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .skip:focus { top: 12px; }
 
 .top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 32px;
-  padding: 20px var(--gutter);
+  padding: 14px var(--gutter);
+  background: var(--concrete);
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease-out, box-shadow 160ms ease-out;
 }
+.top[data-stuck] { border-bottom-color: #C3C9CE; box-shadow: 0 6px 16px -12px rgba(27, 36, 48, 0.35); }
+main [id] { scroll-margin-top: 72px; }
 .brand {
   display: flex;
   align-items: center;
@@ -230,10 +238,21 @@ h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
 .join p { margin-top: 16px; max-width: var(--measure); font-size: 1.1875rem; }
 .join .button { margin-top: 32px; }
 
-.foot { display: flex; align-items: center; gap: 12px; padding: 32px var(--gutter) 48px; color: var(--ink-soft); font-size: 0.9375rem; }
+.foot { background: var(--ink); color: #C2C8CE; font-size: 0.9375rem; padding: 64px var(--gutter) 32px; }
+.foot a { color: var(--concrete); text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+.foot :focus-visible { outline-color: var(--amber); }
+.foot-main { display: grid; grid-template-columns: minmax(0, 5fr) repeat(3, minmax(0, 2fr)); gap: 32px clamp(24px, 4vw, 64px); }
+.foot-brand .brand { color: var(--concrete); text-decoration: none; }
+.foot-brand p { margin-top: 16px; max-width: 24em; }
+.foot h2 { font-size: 0.9375rem; font-weight: 700; color: var(--concrete); letter-spacing: 0; }
+.foot ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.foot-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 56px; padding-top: 20px; border-top: 1px solid #3A424C; color: #9AA3AB; font-size: 0.875rem; }
 
 @media (max-width: 960px) {
   .hero, .studio, .practice { grid-template-columns: minmax(0, 1fr); }
+  .foot-main { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .foot-brand { grid-column: 1 / -1; }
   .flow { grid-template-columns: minmax(0, 1fr); gap: 0; border-left: 2px solid var(--ink); margin-left: 18px; }
   .flow li { border-top: 0; padding: 0 0 32px 36px; }
   .flow li::before { top: -4px; left: -19px; }
@@ -249,9 +268,10 @@ h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
   .finds li { grid-template-columns: 48px minmax(0, 1fr); gap: 16px; }
   .finds .spec { grid-column: 2; text-align: left; font-size: 1.125rem; }
   .practice ul { grid-template-columns: minmax(0, 1fr); }
+  .foot-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .fcw-lamp { transition: none; }
+  .fcw-lamp, .top { transition: none; }
 }
