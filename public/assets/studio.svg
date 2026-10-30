@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+  <style>
+    .pane { fill: #1E242B; stroke: #3A424C; stroke-width: 1; }
+    .label { fill: #9AA3AB; font: 600 12px Overpass, system-ui, sans-serif; }
+    .lane { fill: none; stroke: #E3E6E8; stroke-width: 3; stroke-linecap: round; }
+    .lane-far { fill: none; stroke: #E3E6E8; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 10 10; }
+    .grid { fill: none; stroke: #343C45; stroke-width: 1; }
+    .box { fill: none; stroke: #8A939B; stroke-width: 2; }
+    .cipv { fill: rgba(242, 183, 5, 0.18); stroke: #F2B705; stroke-width: 2.5; }
+    .ego { fill: #E3E6E8; }
+    .curve { fill: none; stroke: #F2B705; stroke-width: 2.5; stroke-linejoin: round; }
+    .curve-2 { fill: none; stroke: #8A939B; stroke-width: 2; stroke-linejoin: round; }
+    .warn { stroke: #D33A2C; stroke-width: 3; }
+  </style>
+  <rect width="960" height="560" rx="10" fill="#161B21"/>
+  <text class="label" x="16" y="26" fill="#E3E6E8" style="fill:#E3E6E8">FCP Studio</text>
+  <text class="label" x="944" y="26" text-anchor="end">recording.mcap</text>
+
+  <rect class="pane" x="16" y="40" width="548" height="312" rx="6"/>
+  <clipPath id="cam"><rect x="16" y="40" width="548" height="312" rx="6"/></clipPath>
+  <g clip-path="url(#cam)">
+    <ellipse cx="290" cy="196" rx="300" ry="230" fill="#242B33"/>
+    <path d="M16 186 Q290 160 564 186" fill="none" stroke="#3A424C" stroke-width="2"/>
+    <path class="lane" d="M70 352 Q210 250 274 182"/>
+    <path class="lane" d="M520 352 Q370 250 306 182"/>
+    <path class="lane-far" d="M274 182 L284 172"/>
+    <path class="lane-far" d="M306 182 L296 172"/>
+    <rect class="cipv" x="252" y="196" width="76" height="52" rx="3"/>
+    <rect class="box" x="400" y="204" width="54" height="40" rx="3"/>
+    <rect class="box" x="132" y="198" width="44" height="34" rx="3"/>
+    <rect x="352" y="104" width="14" height="34" rx="4" fill="#0F1318" stroke="#F2B705" stroke-width="2"/>
+    <circle cx="359" cy="113" r="3.5" fill="#3A424C"/>
+    <circle cx="359" cy="121" r="3.5" fill="#3A424C"/>
+    <circle cx="359" cy="129" r="3.5" fill="#3FA96B"/>
+    <circle cx="470" cy="140" r="14" fill="#E3E6E8" stroke="#D33A2C" stroke-width="5"/>
+    <text x="470" y="145" text-anchor="middle" style="font:900 12px Overpass, system-ui, sans-serif;fill:#1B2430">80</text>
+  </g>
+  <text class="label" x="28" y="62">Camera</text>
+
+  <rect class="pane" x="576" y="40" width="368" height="148" rx="6"/>
+  <clipPath id="scene"><rect x="576" y="40" width="368" height="148" rx="6"/></clipPath>
+  <g clip-path="url(#scene)">
+    <path class="grid" d="M576 172 L944 172 M600 150 L920 150 M624 132 L896 132 M644 118 L876 118 M760 188 L760 100 M680 188 L712 100 M840 188 L808 100 M600 188 L664 100 M920 188 L856 100"/>
+    <path class="cipv" d="M738 128 l22 -8 l22 8 v14 l-22 8 l-22 -8 z"/>
+    <path class="box" d="M852 140 l16 -6 l16 6 v11 l-16 6 l-16 -6 z"/>
+    <path class="box" d="M650 146 l14 -5 l14 5 v10 l-14 5 l-14 -5 z"/>
+    <path class="ego" d="M748 176 l12 -5 l12 5 v8 l-12 5 l-12 -5 z"/>
+  </g>
+  <text class="label" x="588" y="62">3D scene</text>
+
+  <rect class="pane" x="576" y="200" width="368" height="152" rx="6"/>
+  <path class="grid" d="M716 210 V340 M804 210 V340"/>
+  <path class="lane" d="M672 214 V344 M848 214 V344"/>
+  <path class="lane-far" d="M760 214 V344"/>
+  <rect class="cipv" x="726" y="236" width="24" height="40" rx="4"/>
+  <rect class="box" x="814" y="262" width="22" height="36" rx="4"/>
+  <rect class="ego" x="726" y="300" width="24" height="40" rx="4"/>
+  <text class="label" x="588" y="222">Bird’s-eye view</text>
+
+  <rect class="pane" x="16" y="364" width="928" height="120" rx="6"/>
+  <path class="grid" d="M28 420 H932 M28 460 H932"/>
+  <path class="curve" d="M28 404 C120 404 200 406 280 418 S420 456 470 462 S560 440 640 412 S800 400 932 402"/>
+  <path class="curve-2" d="M28 446 C160 446 260 444 360 436 S520 432 620 440 S820 450 932 448"/>
+  <text class="label" x="28" y="386">Plots: time to collision, gap</text>
+
+  <rect class="pane" x="16" y="496" width="928" height="48" rx="6"/>
+  <rect x="32" y="516" width="896" height="8" rx="4" fill="#343C45"/>
+  <rect x="32" y="516" width="438" height="8" rx="4" fill="#8A939B"/>
+  <path class="warn" d="M440 510 V530"/>
+  <path d="M470 506 V534" stroke="#F2B705" stroke-width="3"/>
+  <text class="label" x="928" y="512" text-anchor="end">Timeline</text>
+</svg>

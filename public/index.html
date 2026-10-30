@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FCP: open-source front-camera perception and ADAS</title>
+  <meta name="description" content="FCP is an open-source front-camera perception and ADAS stack: lanes to 60–80 m, vehicles with CIPV and TTC, traffic lights and signs of interest, and ACC, LKA and FCW running open loop.">
+  <meta name="theme-color" content="#E3E6E8">
+  <link rel="canonical" href="https://fcp.famashines.com/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fcp.famashines.com/">
+  <meta property="og:title" content="FCP: open-source front-camera perception and ADAS">
+  <meta property="og:description" content="One fisheye camera. Lanes, vehicles, traffic lights and signs, built only from open models, public datasets and published methods.">
+  <meta property="og:image" content="https://fcp.famashines.com/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/assets/fonts/overpass.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/bench.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/assets/bench.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="/" aria-label="FCP home">
+      <img src="/assets/brand/fcp-mark.svg" alt="" width="36" height="36">
+      <span>FCP</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#sees">What it sees</a>
+      <a href="#functions">Functions</a>
+      <a href="#studio">Studio</a>
+      <a href="#inside">Inside</a>
+      <a href="#status">Status</a>
+    </nav>
+    <a class="button button-small" href="https://www.linkedin.com/" rel="noopener">Contact</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="version">Version 0.2</p>
+        <h1 id="hero-title">One fisheye camera. Lanes, vehicles, lights and signs.</h1>
+        <p class="lede">FCP is an open-source front-camera perception and ADAS stack. It uses only open models, public datasets and published methods, and it runs on real recordings today.</p>
+        <div class="actions">
+          <a class="button" href="https://www.linkedin.com/" rel="noopener">Contact on LinkedIn</a>
+          <a class="button button-quiet" href="#sees">See what it detects</a>
+        </div>
+      </div>
+
+      <figure class="bench iso" data-theme="light" data-bench data-fcw="off">
+        <div class="bench-art" data-bench-art tabindex="0" role="slider" aria-label="Test bench. Point at the road or use the arrow keys to move the target car." aria-valuemin="3" aria-valuemax="36" aria-valuenow="34" aria-valuetext="Gap 34 metres, forward collision warning off"></div>
+        <dl class="readout">
+          <div><dt>Gap to CIPV</dt><dd data-out="gap">34.0 m</dd></div>
+          <div><dt>Closing speed</dt><dd data-out="closing">0.0 m/s</dd></div>
+          <div><dt>Time to collision</dt><dd data-out="ttc">not closing</dd></div>
+          <div class="readout-fcw"><dt>Collision warning</dt><dd data-out="fcw">Off</dd></div>
+        </dl>
+        <figcaption>The CIPV logic on a test bench. The yellow car is the closest in-path vehicle; the car in the next lane is not. Point at the road to move it. The numbers come from a simple model of this figure, not from FCP, with the warning at a time to collision below 2.6 s.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sees" id="sees" aria-labelledby="sees-title">
+      <h2 id="sees-title">What the camera finds</h2>
+      <p class="section-lede">FCP shows only what applies to your lane: the vehicle you follow, the light you must obey, the sign that is for you.</p>
+      <ul class="finds">
+        <li>
+          <svg class="pict" viewBox="0 0 48 48" aria-hidden="true"><path class="pict-line" d="M4 20h40M10 44 21 24M38 44 27 24"/><path class="pict-faint" d="M24 44v-4M24 35v-4M24 27v-2"/></svg>
+          <div>
+            <h3>Lanes</h3>
+            <p>Lane detection out to 60–80 m on the motorway. A second “far view” pass over the 120° fisheye image adds the long range.</p>
+          </div>
+          <p class="spec">60–80 m</p>
+        </li>
+        <li>
+          <svg class="pict" viewBox="0 0 48 48" aria-hidden="true"><path class="pict-faint" d="M4 44 18 18M44 44 30 18"/><path class="pict-mark" d="M16 26h16v12H16z"/><path class="pict-line" d="M16 26l4-4h16l-4 4M32 26v12l4-4V22"/></svg>
+          <div>
+            <h3>Vehicles and CIPV</h3>
+            <p>3D vehicle detection, selection of the closest in-path vehicle (CIPV) and time to collision (TTC). Filters remove oncoming traffic and false detections on guard rails.</p>
+          </div>
+          <p class="spec">CIPV, TTC</p>
+        </li>
+        <li>
+          <svg class="pict" viewBox="0 0 48 48" aria-hidden="true"><rect class="pict-line" x="17" y="4" width="14" height="34" rx="4"/><circle class="pict-faint" cx="24" cy="12" r="3.5"/><circle class="pict-mark" cx="24" cy="21" r="3.5"/><circle class="pict-faint" cx="24" cy="30" r="3.5"/><path class="pict-line" d="M24 38v6"/></svg>
+          <div>
+            <h3>Traffic light of interest</h3>
+            <p>Only the light that applies to your lane, with its state. The other lights at the junction stay out of the way.</p>
+          </div>
+          <p class="spec">Your lane only</p>
+        </li>
+        <li>
+          <svg class="pict" viewBox="0 0 48 48" aria-hidden="true"><circle class="pict-sign" cx="24" cy="22" r="16"/><text class="pict-text" x="24" y="27.5" text-anchor="middle">80</text><path class="pict-line" d="M24 38v6"/></svg>
+          <div>
+            <h3>Traffic signs of interest</h3>
+            <p>Speed limits, no overtaking, priority road and more, shown only when they apply to you.</p>
+          </div>
+          <p class="spec">When it applies</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="functions" id="functions" aria-labelledby="functions-title">
+      <h2 id="functions-title">Driving functions, open loop</h2>
+      <p class="section-lede">Three functions run on top of the perception output. They compute what the car should do, but they do not actuate it.</p>
+      <dl class="fn">
+        <div><dt>ACC</dt><dd><strong>Adaptive cruise control.</strong> Keeps a set speed and a safe gap to the CIPV.</dd></div>
+        <div><dt>LKA</dt><dd><strong>Lane keeping assist.</strong> Steers back toward the lane centre from the detected lanes.</dd></div>
+        <div><dt>FCW</dt><dd><strong>Forward collision warning.</strong> Warns when the time to collision with the CIPV gets too short.</dd></div>
+      </dl>
+    </section>
+
+    <section class="studio" id="studio" aria-labelledby="studio-title">
+      <div class="studio-text">
+        <h2 id="studio-title">FCP Studio</h2>
+        <p>A viewer for MCAP recordings, made for FCP. Camera view, 3D scene, bird’s-eye view, timeline and plots in one window, so you can see what the stack saw and why it decided.</p>
+      </div>
+      <figure class="studio-shot">
+        <img src="/assets/studio.svg" alt="FCP Studio layout: the camera view with lanes and a highlighted vehicle, a 3D scene, a bird’s-eye view, plots and a timeline under them." width="960" height="560">
+        <figcaption>Layout of FCP Studio, drawn for this page.</figcaption>
+      </figure>
+    </section>
+
+    <section class="inside" id="inside" aria-labelledby="inside-title">
+      <h2 id="inside-title">Inside the stack</h2>
+      <ol class="flow">
+        <li><h3>Fisheye camera</h3><p>One 120° front camera. Calibration comes from the fisheye camera model.</p></li>
+        <li><h3>Multi-task network</h3><p>One network with a DINOv3 ViT-S backbone, trained on public datasets and running on TensorRT.</p></li>
+        <li><h3>Tracking and distance</h3><p>A camera-only pipeline with tracking and distance fusion.</p></li>
+        <li><h3>Driving functions</h3><p>ACC, LKA and FCW on top of the perception output, open loop.</p></li>
+        <li><h3>Recording and review</h3><p>Everything goes to MCAP and opens in FCP Studio.</p></li>
+      </ol>
+      <div class="practice">
+        <h3>How it is kept honest</h3>
+        <ul>
+          <li>A modular architecture.</li>
+          <li>A fault-injection suite that tests robustness.</li>
+          <li>A benchmark suite.</li>
+          <li>An issue tracker that links every issue to its fix.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="status" id="status" aria-labelledby="status-title">
+      <h2 id="status-title">Where it stands</h2>
+      <div class="status-grid">
+        <div>
+          <h3>Works today</h3>
+          <p>Version 0.2 runs on my own recordings: motorway lanes, vehicles with CIPV and TTC, lights and signs of interest, and the three functions in open loop.</p>
+        </div>
+        <div>
+          <h3>Needs work</h3>
+          <p>Distance at long range, rare scenarios and night driving.</p>
+        </div>
+        <div>
+          <h3>Next</h3>
+          <p>Fine-tuning on real-world fisheye data. The source code is not public yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="join" id="join" aria-labelledby="join-title">
+      <h2 id="join-title">Build it with me</h2>
+      <p>If you work on ADAS or computer vision, you can help with ideas, datasets, evaluation or code. Send me a message and tell me what interests you.</p>
+      <a class="button" href="https://www.linkedin.com/" rel="noopener">Contact on LinkedIn</a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <img src="/assets/brand/fcp-mark.svg" alt="" width="24" height="24">
+    <p>FCP is a side project, hosted by famashines.</p>
+  </footer>
+</body>
+</html>
